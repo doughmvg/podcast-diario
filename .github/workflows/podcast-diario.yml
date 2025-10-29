@@ -1,0 +1,56 @@
+name: 🎙️ Gerar Podcast Diário
+
+on:
+  schedule:
+    # Executa todo dia às 6h da manhã (horário UTC)
+    # 6h UTC = 3h da manhã no horário de Brasília
+    - cron: '0 6 * * *'
+  
+  # Permite executar manualmente quando quiser
+  workflow_dispatch:
+
+jobs:
+  gerar-podcast:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Baixa o código do repositório
+    - name: 📥 Checkout do código
+      uses: actions/checkout@v4
+    
+    # 2. Configura Python
+    - name: 🐍 Configurar Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    # 3. Instala as dependências
+    - name: 📦 Instalar dependências
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    # 4. Executa o bot para gerar o podcast
+    - name: 🎙️ Gerar podcast
+      run: |
+        python podcast_bot.py
+    
+    # 5. Salva os arquivos gerados
+    - name: 💾 Upload dos arquivos gerados
+      uses: actions/upload-artifact@v4
+      with:
+        name: podcast-${{ github.run_number }}
+        path: |
+          podcast_*.txt
+          podcast_*.json
+        retention-days: 90
+    
+    # 6. Commita os arquivos de volta no repositório (opcional)
+    - name: 📤 Salvar arquivos no repositório
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Podcast Bot"
+        git add podcast_*.txt podcast_*.json || true
+        git commit -m "🎙️ Podcast gerado em $(date +'%d/%m/%Y às %H:%M')" || true
+        git push || true
+      continue-on-error: true
