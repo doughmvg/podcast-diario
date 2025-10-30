@@ -271,7 +271,7 @@ def criar_roteiro_claudiao(noticias_brasil, noticias_mundo):
     ]
     
     # Chamada fixa após a intro
-    chamada_fixa = f"""Eu tô aqui pra te deixar por dentro do que tá rolando nesse mundão nosso de meu Deus. Então pega seu cafézinho, seu chazinho, ou aquele lanchinho da tarde, e vem comigo que eu vou te tirar da caverna da desinformação!
+    chamada_fixa = f"""Eu tô aqui pra te deixar por dentro do que tá rolando nesse mundão! Então pega seu cafézinho, seu chazinho, ou aquele lanchinho da tarde, e vem comigo que eu vou te tirar da caverna da desinformação!
 
 Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais notícias do Brasil e do mundo pra você. Bora lá!
 
@@ -369,21 +369,13 @@ Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais not
     # ENCERRAMENTO
     total_noticias = len(noticias_brasil) + len(noticias_mundo)
     
-    encerramentos = [
-        f"E aí, curtiu? Foram {total_noticias} notícias pra você não ficar por fora!",
-        f"Pronto, você já tá mais informado que 90% da população! Foram {total_noticias} notícias!",
-        f"E é isso aí! Mais {total_noticias} notícias pra sua coleção!"
-    ]
-    
-    encerramento_escolhido = encerramentos[datetime.now().day % len(encerramentos)]
-    
-    roteiro += f"""{encerramento_escolhido}
+    roteiro += f"""E é isso, galera! Foram mais {total_noticias} notícias pra você não ficar por fora de nada.
 
-Se você gostou, compartilha aí com aquela pessoa que vive dizendo que não tem tempo de ficar informada. Manda no grupo da família, no zap dos amigos, espalha o conhecimento!
+Muito obrigado por ter me ouvido até aqui! Se você curtiu o conteúdo, me ajuda aí: deixa suas 5 estrelinhas na avaliação, isso me ajuda demais!
 
-E lembra: informação é poder, mas informação boa é poder de verdade!
+E não esquece de compartilhar com aquela pessoa que vive dizendo que não tem tempo de ler notícia. Manda pro amigo alienado, pro parente que só compartilha fake news, manda no grupo da família! Vamos espalhar informação de qualidade!
 
-Eu volto amanhã com mais notícias quentinhas. Até lá, se cuida, fica bem, e não esquece de dar aquela conferida no mundo de vez em quando!
+Amanhã eu volto com mais notícias fresquinhas. Até lá, se cuida, fica bem, e lembra: informação é poder!
 
 Falou, galera! Claudião assinando embaixo!
 """
