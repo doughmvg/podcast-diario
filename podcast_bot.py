@@ -134,38 +134,83 @@ def resumir_noticia(titulo, descricao, conteudo=""):
 # ============================================
 
 def buscar_noticias_brasil_curadas():
-    """Busca notícias do Brasil com curadoria de qualidade"""
+    """Busca notícias do Brasil com curadoria de qualidade usando múltiplas estratégias"""
     print("📰 Buscando notícias do Brasil com curadoria...")
     
     noticias_coletadas = []
     
-    # Busca 1: Notícias gerais top headlines
+    # ESTRATÉGIA 1: Top headlines do Brasil
     try:
-        url = f'https://newsapi.org/v2/top-headlines?country=br&pageSize=15&apiKey={NEWSAPI_KEY}'
+        url = f'https://newsapi.org/v2/top-headlines?country=br&pageSize=20&apiKey={NEWSAPI_KEY}'
         resposta = requests.get(url, timeout=15)
         dados = resposta.json()
         
         if dados.get('status') == 'ok' and dados.get('articles'):
             noticias_coletadas.extend(dados['articles'])
-            print(f"✅ Encontradas {len(dados['articles'])} notícias gerais")
+            print(f"✅ Headlines BR: {len(dados['articles'])} notícias")
+        else:
+            print(f"⚠️ Erro headlines BR: {dados.get('message', 'Desconhecido')}")
     except Exception as e:
-        print(f"⚠️ Erro na busca geral: {e}")
+        print(f"⚠️ Erro na busca headlines: {e}")
     
-    # Busca 2: Por categorias relevantes
-    for categoria in ['business', 'technology', 'health', 'science']:
-        if len(noticias_coletadas) >= 20:
+    # ESTRATÉGIA 2: Buscar por palavras-chave brasileiras (funciona melhor no plano free)
+    palavras_chave_brasil = [
+        'Brasil', 'Brasília', 'São Paulo', 'Rio de Janeiro',
+        'governo brasileiro', 'economia brasil', 'política brasil'
+    ]
+    
+    for palavra in palavras_chave_brasil:
+        if len(noticias_coletadas) >= 15:
             break
         
         try:
-            url = f'https://newsapi.org/v2/top-headlines?country=br&category={categoria}&pageSize=5&apiKey={NEWSAPI_KEY}'
+            url = f'https://newsapi.org/v2/everything?q={palavra}&language=pt&sortBy=publishedAt&pageSize=5&apiKey={NEWSAPI_KEY}'
             resposta = requests.get(url, timeout=15)
             dados = resposta.json()
             
             if dados.get('status') == 'ok' and dados.get('articles'):
                 noticias_coletadas.extend(dados['articles'])
-                print(f"✅ Notícias de {categoria}")
-        except:
-            pass
+                print(f"✅ Busca '{palavra}': {len(dados['articles'])} notícias")
+        except Exception as e:
+            print(f"⚠️ Erro buscando '{palavra}': {e}")
+    
+    # ESTRATÉGIA 3: Por categorias (se ainda não tiver o suficiente)
+    if len(noticias_coletadas) < 10:
+        for categoria in ['business', 'technology', 'health', 'science']:
+            if len(noticias_coletadas) >= 15:
+                break
+            
+            try:
+                url = f'https://newsapi.org/v2/top-headlines?country=br&category={categoria}&pageSize=5&apiKey={NEWSAPI_KEY}'
+                resposta = requests.get(url, timeout=15)
+                dados = resposta.json()
+                
+                if dados.get('status') == 'ok' and dados.get('articles'):
+                    noticias_coletadas.extend(dados['articles'])
+                    print(f"✅ Categoria {categoria}: {len(dados['articles'])} notícias")
+            except:
+                pass
+    
+    # ESTRATÉGIA 4: Buscar de domínios brasileiros específicos
+    if len(noticias_coletadas) < 10:
+        dominios_br = ['g1.globo.com', 'folha.uol.com.br', 'uol.com.br', 'estadao.com.br']
+        
+        for dominio in dominios_br:
+            if len(noticias_coletadas) >= 15:
+                break
+            
+            try:
+                url = f'https://newsapi.org/v2/everything?domains={dominio}&language=pt&sortBy=publishedAt&pageSize=5&apiKey={NEWSAPI_KEY}'
+                resposta = requests.get(url, timeout=15)
+                dados = resposta.json()
+                
+                if dados.get('status') == 'ok' and dados.get('articles'):
+                    noticias_coletadas.extend(dados['articles'])
+                    print(f"✅ Domínio {dominio}: {len(dados['articles'])} notícias")
+            except:
+                pass
+    
+    print(f"📊 Total coletado: {len(noticias_coletadas)} notícias antes da curadoria")
     
     # CURADORIA: Filtrar notícias relevantes
     noticias_relevantes = []
@@ -328,7 +373,10 @@ Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais not
         roteiro += "Opa, tivemos um probleminha técnico aqui e não consegui pegar as notícias do Brasil hoje. Mas relaxa que as internacionais eu trouxe!\n\n"
     
     # TRANSIÇÃO PRO MUNDO
-    roteiro += "Beleza, agora vamos dar um pulinho pra fora e ver o que tá acontecendo pelo mundo.\n\n"
+    if noticias_brasil and len(noticias_brasil) > 0:
+        roteiro += "Beleza, agora vamos dar um pulinho pra fora e ver o que tá acontecendo pelo mundo.\n\n"
+    else:
+        roteiro += "Então bora lá, vamos ver o que tá pegando no mundo!\n\n"
     
     # BLOCO MUNDO
     if noticias_mundo and len(noticias_mundo) > 0:
@@ -480,64 +528,4 @@ def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
         json.dump(metadados, f, indent=2, ensure_ascii=False)
     print(f"📊 Metadados: {arquivo_json}")
     
-    return arquivo_tts, arquivo_visual, arquivo_json
-
-# ============================================
-# FUNÇÃO PRINCIPAL
-# ============================================
-
-def gerar_podcast():
-    """Gera o podcast completo do Claudião"""
-    
-    print("\n" + "═"*60)
-    print("🎙️  CLAUDIÃO NEWS - GERADOR DE PODCAST")
-    print("═"*60 + "\n")
-    
-    inicio = datetime.now()
-    
-    # 1. Buscar e curar notícias
-    noticias_brasil = buscar_noticias_brasil_curadas()
-    noticias_mundo = buscar_noticias_mundo_curadas()
-    
-    if not noticias_brasil and not noticias_mundo:
-        print("\n❌ Não foi possível buscar notícias.")
-        return False
-    
-    # 2. Criar roteiros
-    roteiro_tts = criar_roteiro_claudiao(noticias_brasil, noticias_mundo)
-    roteiro_visual = criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts)
-    
-    # 3. Salvar arquivos
-    arq_tts, arq_visual, arq_json = salvar_arquivos(
-        roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
-    )
-    
-    fim = datetime.now()
-    tempo = (fim - inicio).total_seconds()
-    
-    # 4. Resumo
-    print("\n" + "═"*60)
-    print("✅ PODCAST DO CLAUDIÃO GERADO!")
-    print("═"*60)
-    print(f"\n📄 Arquivos:")
-    print(f"   ✓ {arq_tts} (para gerar áudio)")
-    print(f"   ✓ {arq_visual} (leitura + links)")
-    print(f"   ✓ {arq_json}")
-    print(f"\n📊 Stats:")
-    print(f"   • Brasil: {len(noticias_brasil)} | Mundo: {len(noticias_mundo)}")
-    print(f"   • Tempo: {tempo:.1f}s")
-    print("\n" + "═"*60 + "\n")
-    
-    return True
-
-# ============================================
-# EXECUTAR
-# ============================================
-
-if __name__ == "__main__":
-    sucesso = gerar_podcast()
-    
-    if sucesso:
-        print("🎉 Claudião News no ar!")
-    else:
-        print("😢 Falha na geração.")
+    return arquivo_tts, ar
