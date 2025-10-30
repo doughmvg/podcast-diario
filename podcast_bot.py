@@ -153,10 +153,10 @@ def buscar_noticias_brasil_curadas():
     except Exception as e:
         print(f"⚠️ Erro na busca headlines: {e}")
     
-    # ESTRATÉGIA 2: Buscar por palavras-chave brasileiras (funciona melhor no plano free)
+    # ESTRATÉGIA 2: Buscar por palavras-chave brasileiras
     palavras_chave_brasil = [
         'Brasil', 'Brasília', 'São Paulo', 'Rio de Janeiro',
-        'governo brasileiro', 'economia brasil', 'política brasil'
+        'governo brasileiro', 'economia brasil'
     ]
     
     for palavra in palavras_chave_brasil:
@@ -173,42 +173,6 @@ def buscar_noticias_brasil_curadas():
                 print(f"✅ Busca '{palavra}': {len(dados['articles'])} notícias")
         except Exception as e:
             print(f"⚠️ Erro buscando '{palavra}': {e}")
-    
-    # ESTRATÉGIA 3: Por categorias (se ainda não tiver o suficiente)
-    if len(noticias_coletadas) < 10:
-        for categoria in ['business', 'technology', 'health', 'science']:
-            if len(noticias_coletadas) >= 15:
-                break
-            
-            try:
-                url = f'https://newsapi.org/v2/top-headlines?country=br&category={categoria}&pageSize=5&apiKey={NEWSAPI_KEY}'
-                resposta = requests.get(url, timeout=15)
-                dados = resposta.json()
-                
-                if dados.get('status') == 'ok' and dados.get('articles'):
-                    noticias_coletadas.extend(dados['articles'])
-                    print(f"✅ Categoria {categoria}: {len(dados['articles'])} notícias")
-            except:
-                pass
-    
-    # ESTRATÉGIA 4: Buscar de domínios brasileiros específicos
-    if len(noticias_coletadas) < 10:
-        dominios_br = ['g1.globo.com', 'folha.uol.com.br', 'uol.com.br', 'estadao.com.br']
-        
-        for dominio in dominios_br:
-            if len(noticias_coletadas) >= 15:
-                break
-            
-            try:
-                url = f'https://newsapi.org/v2/everything?domains={dominio}&language=pt&sortBy=publishedAt&pageSize=5&apiKey={NEWSAPI_KEY}'
-                resposta = requests.get(url, timeout=15)
-                dados = resposta.json()
-                
-                if dados.get('status') == 'ok' and dados.get('articles'):
-                    noticias_coletadas.extend(dados['articles'])
-                    print(f"✅ Domínio {dominio}: {len(dados['articles'])} notícias")
-            except:
-                pass
     
     print(f"📊 Total coletado: {len(noticias_coletadas)} notícias antes da curadoria")
     
@@ -434,20 +398,20 @@ def criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts):
     """Cria versão visual formatada do roteiro"""
     data_formatada, dia_semana = formatar_data_portugues()
     
-    roteiro_visual = f"""╔════════════════════════════════════════════════════════════╗
+    roteiro_visual = f"""╔══════════════════════════════════════════════════════════════╗
 ║              🎙️  CLAUDIÃO NEWS - PODCAST DIÁRIO            ║
 ║                    {data_formatada}                   ║
-╚════════════════════════════════════════════════════════════╝
+╚══════════════════════════════════════════════════════════════╝
 
-═══════════════════════════════════════════
+════════════════════════════════════════════════════════════════
 📝 ROTEIRO PARA LEITURA
-═══════════════════════════════════════════
+════════════════════════════════════════════════════════════════
 
 {roteiro_tts}
 
-═══════════════════════════════════════════
+════════════════════════════════════════════════════════════════
 📰 FONTES E LINKS DAS NOTÍCIAS
-═══════════════════════════════════════════
+════════════════════════════════════════════════════════════════
 
 🇧🇷 BRASIL:
 """
@@ -459,7 +423,7 @@ def criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts):
             fonte = noticia.get('source', {}).get('name', '')
             
             roteiro_visual += f"\n{i}. {titulo}\n"
-            roteiro_visual += f"   📍 {fonte}\n"
+            roteiro_visual += f"   📰 {fonte}\n"
             roteiro_visual += f"   🔗 {url}\n"
     
     roteiro_visual += "\n🌍 MUNDO:\n"
@@ -471,13 +435,13 @@ def criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts):
             fonte = noticia.get('source', {}).get('name', '')
             
             roteiro_visual += f"\n{i}. {titulo}\n"
-            roteiro_visual += f"   📍 {fonte}\n"
+            roteiro_visual += f"   📰 {fonte}\n"
             roteiro_visual += f"   🔗 {url}\n"
     
     roteiro_visual += f"""
-═══════════════════════════════════════════
+════════════════════════════════════════════════════════════════
 📊 ESTATÍSTICAS DO EPISÓDIO
-═══════════════════════════════════════════
+════════════════════════════════════════════════════════════════
 
 Total de notícias: {len(noticias_brasil) + len(noticias_mundo)}
 Notícias do Brasil: {len(noticias_brasil)}
@@ -497,17 +461,19 @@ def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
     """Salva todos os arquivos do podcast"""
     hoje = datetime.now().strftime('%Y-%m-%d')
     
+    print("\n💾 Salvando arquivos...")
+    
     # 1. Roteiro TTS (limpo)
     arquivo_tts = f'podcast_roteiro_tts_{hoje}.txt'
     with open(arquivo_tts, 'w', encoding='utf-8') as f:
         f.write(roteiro_tts)
-    print(f"💾 Roteiro TTS: {arquivo_tts}")
+    print(f"  ✅ Roteiro TTS: {arquivo_tts}")
     
     # 2. Roteiro visual (com links)
     arquivo_visual = f'podcast_transcricao_{hoje}.txt'
     with open(arquivo_visual, 'w', encoding='utf-8') as f:
         f.write(roteiro_visual)
-    print(f"💾 Transcrição: {arquivo_visual}")
+    print(f"  ✅ Transcrição: {arquivo_visual}")
     
     # 3. Metadados
     arquivo_json = f'podcast_metadados_{hoje}.json'
@@ -521,11 +487,69 @@ def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
             'noticias_mundo': len(noticias_mundo)
         },
         'fontes_brasil': [n.get('source', {}).get('name') for n in noticias_brasil],
-        'fontes_mundo': [n.get('source', {}).get('name') for n in noticias_mundo]
+        'fontes_mundo': [n.get('source', {}).get('name') for n in noticias_mundo],
+        'titulos_brasil': [n.get('title') for n in noticias_brasil],
+        'titulos_mundo': [n.get('title') for n in noticias_mundo]
     }
     
     with open(arquivo_json, 'w', encoding='utf-8') as f:
         json.dump(metadados, f, indent=2, ensure_ascii=False)
-    print(f"📊 Metadados: {arquivo_json}")
+    print(f"  ✅ Metadados: {arquivo_json}")
     
-    return arquivo_tts, ar
+    return arquivo_tts, arquivo_visual, arquivo_json
+
+# ============================================
+# FUNÇÃO PRINCIPAL
+# ============================================
+
+def gerar_podcast():
+    """Executa todo o pipeline de geração do podcast"""
+    
+    print("\n" + "="*70)
+    print("🎙️  CLAUDIÃO NEWS - GERADOR DE PODCAST AUTOMÁTICO")
+    print("="*70 + "\n")
+    
+    # 1. Buscar notícias
+    noticias_brasil = buscar_noticias_brasil_curadas()
+    noticias_mundo = buscar_noticias_mundo_curadas()
+    
+    if not noticias_brasil and not noticias_mundo:
+        print("\n❌ ERRO: Não foi possível buscar nenhuma notícia!")
+        print("Verifique sua API Key e conexão com internet.\n")
+        return
+    
+    # 2. Criar roteiros
+    roteiro_tts = criar_roteiro_claudiao(noticias_brasil, noticias_mundo)
+    roteiro_visual = criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts)
+    
+    # 3. Salvar arquivos
+    arquivo_tts, arquivo_visual, arquivo_json = salvar_arquivos(
+        roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
+    )
+    
+    # 4. Relatório final
+    print("\n" + "="*70)
+    print("✅ PODCAST GERADO COM SUCESSO!")
+    print("="*70)
+    print(f"\n📊 Estatísticas:")
+    print(f"  • Total de notícias: {len(noticias_brasil) + len(noticias_mundo)}")
+    print(f"  • Notícias do Brasil: {len(noticias_brasil)}")
+    print(f"  • Notícias do Mundo: {len(noticias_mundo)}")
+    print(f"\n📁 Arquivos gerados:")
+    print(f"  • {arquivo_tts}")
+    print(f"  • {arquivo_visual}")
+    print(f"  • {arquivo_json}")
+    print("\n" + "="*70 + "\n")
+    
+    # 5. Preview do roteiro
+    print("📖 PREVIEW DO ROTEIRO (300 caracteres):")
+    print("-"*70)
+    print(roteiro_tts[:300] + "...")
+    print("-"*70 + "\n")
+
+# ============================================
+# EXECUTAR
+# ============================================
+
+if __name__ == "__main__":
+    gerar_podcast()
