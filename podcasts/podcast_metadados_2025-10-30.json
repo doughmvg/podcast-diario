@@ -1,0 +1,34 @@
+{
+  "data_geracao": "2025-10-30T10:34:28.445854",
+  "data_podcast": "2025-10-30",
+  "apresentador": "Claudião",
+  "estatisticas": {
+    "total_noticias": 8,
+    "noticias_brasil": 5,
+    "noticias_mundo": 3
+  },
+  "fontes_brasil": [
+    "Globo",
+    "Metropoles.com",
+    "InfoMoney",
+    "Diariodocentrodomundo.com.br",
+    "Metropoles.com"
+  ],
+  "fontes_mundo": [
+    "NPR",
+    "The Washington Post",
+    "CBS News"
+  ],
+  "titulos_brasil": [
+    "'Cenas dantescas', 'caos colossal', 'pior dia de violência': como a mídia internacional viu a operação mais letal do Rio",
+    "Corpos na Penha têm tiros na cabeça e facadas, dizem moradores",
+    "Rio normaliza trânsito e transporte público após 12 horas de bloqueios",
+    "VÍDEOS: Os estragos do Furacão Melissa, que atingiu a Jamaica com ventos de 300 km/h",
+    "São Silvestre abre 5 mil vagas extras para 100ª edição. Veja regras"
+  ],
+  "titulos_mundo": [
+    "Espera-se que o Fed reduza as taxas de juros à medida que o mercado de trabalho mostra sinais de fraqueza - NPR",
+    "Coluna | Enquanto Trump se encontra com Xi, é vantagem para a China - The Washington Post",
+    "Furacão Melissa \"extremamente perigoso\" atinge Cuba após atingir a Jamaica - CBS News"
+  ]
+}
