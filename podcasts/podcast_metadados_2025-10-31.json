@@ -1,0 +1,34 @@
+{
+  "data_geracao": "2025-10-31T09:38:47.803882",
+  "data_podcast": "2025-10-31",
+  "apresentador": "Claudião",
+  "estatisticas": {
+    "total_noticias": 8,
+    "noticias_brasil": 5,
+    "noticias_mundo": 3
+  },
+  "fontes_brasil": [
+    "Catracalivre.com.br",
+    "Uxdesign.cc",
+    "BBC News",
+    "Diariodocentrodomundo.com.br",
+    "Blog.br"
+  ],
+  "fontes_mundo": [
+    "Medium",
+    "CNBC",
+    "NPR"
+  ],
+  "titulos_brasil": [
+    "São Paulo Restaurant Week ajuda a formar novos chefs",
+    "Por que mobile first não é uma regra",
+    "Uso de drones por facções pode transformar conflito urbano em batalha aérea, diz pesquisador",
+    "Lula sanciona lei que aumenta o rigor no combate ao crime organizado após chacina no Rio",
+    "SUVs mais vendidos no Brasil em outubro - até o dia 29"
+  ],
+  "titulos_mundo": [
+    "3I/ATLAS ilumina rapidamente e fica mais azul que o Sol próximo ao periélio - Avi Loeb – Médio",
+    "Os futuros de ações sobem marginalmente após a reunião Trump-Xi na Coreia do Sul: atualizações ao vivo - CNBC",
+    "O que observar durante a audiência de confirmação de Casey Means para cirurgião geral - NPR"
+  ]
+}
