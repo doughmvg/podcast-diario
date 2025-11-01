@@ -1,0 +1,34 @@
+{
+  "data_geracao": "2025-11-01T09:32:06.390480",
+  "data_podcast": "2025-11-01",
+  "apresentador": "Claudião",
+  "estatisticas": {
+    "total_noticias": 8,
+    "noticias_brasil": 5,
+    "noticias_mundo": 3
+  },
+  "fontes_brasil": [
+    "Terra.com.br",
+    "Ig.com.br",
+    "Ig.com.br",
+    "InfoMoney",
+    "InfoMoney"
+  ],
+  "fontes_mundo": [
+    "NPR",
+    "Associated Press",
+    "Bloomberg"
+  ],
+  "titulos_brasil": [
+    "Nova tributação sobre aluguéis impõe corrida por planejamento",
+    "Final da Libertadores no Brasil? CBF estuda duas opções no país",
+    "Efeitos de La Niña provocam instabilidade e chuva pelo país",
+    "Desemprego, resultado fiscal, Vale, falas do Fed e mais destaques desta sexta-feira",
+    "Minidólar (WDOX25) hoje: traders atentos ao PCE dos EUA e desemprego no Brasil"
+  ],
+  "titulos_mundo": [
+    "Trump diz que o Senado deveria abandonar a obstrução para acabar com a paralisação do governo - NPR",
+    "FDA recorda remédio para pressão arterial contaminado com substância química causadora de câncer – AP News",
+    "Exportadores chineses apostam que a trégua tarifária entre Xi e Trump não durará - Bloomberg.com"
+  ]
+}
