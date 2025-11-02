@@ -1,0 +1,34 @@
+{
+  "data_geracao": "2025-11-02T09:30:38.244547",
+  "data_podcast": "2025-11-02",
+  "apresentador": "Claudião",
+  "estatisticas": {
+    "total_noticias": 8,
+    "noticias_brasil": 5,
+    "noticias_mundo": 3
+  },
+  "fontes_brasil": [
+    "InfoMoney",
+    "Metropoles.com",
+    "Olhardigital.com.br",
+    "Olhardigital.com.br",
+    "Globo"
+  ],
+  "fontes_mundo": [
+    "The Washington Post",
+    "CNBC",
+    "Axios"
+  ],
+  "titulos_brasil": [
+    "Juros nos EUA, Big techs surpreendem e balanços no Brasil; veja destaques da semana",
+    "Ligada a ONG investigada por fraudar INSS foi condenada por morte de criança",
+    "Cometa 3I/ATLAS visível no céu e chuva de meteoros no Calendário Astronômico de novembro",
+    "Fases da Lua em novembro de 2025: veja datas e horários",
+    "Unesp 2026: Saiba o que levar na prova e o que pode desclassificar candidatos no vestibular"
+  ],
+  "titulos_mundo": [
+    "Os maiores empregadores do país estão avisando seus trabalhadores - The Washington Post",
+    "Xi da China pressiona por órgão global de IA na APEC em oposição aos EUA - CNBC",
+    "Trump pergunta ao tribunal como “financiar legalmente o SNAP” após ordem do juiz – Axios"
+  ]
+}
