@@ -1,6 +1,7 @@
 """
 BOT DE PODCAST - CLAUDIÃO NEWS
 Podcast diário com personalidade, curadoria e qualidade
+VERSÃO COM GERAÇÃO DE ÁUDIO (gTTS)
 """
 
 import requests
@@ -9,6 +10,8 @@ import json
 import os
 from deep_translator import GoogleTranslator
 import re
+from gtts import gTTS
+import time
 
 # ============================================
 # CONFIGURAÇÕES
@@ -21,12 +24,6 @@ FILTROS_NEGATIVOS = [
     'loteria', 'quina', 'mega-sena', 'lotomania', 'resultado do jogo',
     'horóscopo', 'signo', 'fofoca', 'celebridade', 'BBB',
     'A Fazenda', 'reality show', 'resultado da loteria'
-]
-
-# Categorias relevantes para buscar
-CATEGORIAS_RELEVANTES = [
-    'economia', 'política', 'tecnologia', 'ciência', 'saúde',
-    'educação', 'meio ambiente', 'segurança', 'infraestrutura'
 ]
 
 # ============================================
@@ -52,22 +49,17 @@ def limpar_texto(texto):
     if not texto:
         return ""
     
-    # Remove [Removed], quebras de linha excessivas, etc
     texto = texto.replace('[Removed]', '').replace('[removed]', '')
     texto = texto.replace('\n', ' ').replace('\r', ' ')
-    texto = re.sub(r'\s+', ' ', texto)  # Remove espaços múltiplos
+    texto = re.sub(r'\s+', ' ', texto)
     texto = texto.strip()
-    
-    # Remove URLs do meio do texto
     texto = re.sub(r'http[s]?://\S+', '', texto)
-    
-    # Remove "O post ... apareceu primeiro em ..."
     texto = re.sub(r'O post .+ apareceu primeiro em .+', '', texto, flags=re.IGNORECASE)
     
     return texto
 
 def eh_noticia_relevante(titulo, descricao):
-    """Verifica se a notícia é relevante (não é fofoca, loteria, etc)"""
+    """Verifica se a notícia é relevante"""
     texto_completo = f"{titulo} {descricao}".lower()
     
     for filtro in FILTROS_NEGATIVOS:
@@ -99,47 +91,36 @@ def formatar_data_portugues():
     return f"{dia} de {mes} de {ano}", dia_semana
 
 def resumir_noticia(titulo, descricao, conteudo=""):
-    """
-    Cria um resumo inteligente da notícia
-    Combina título, descrição e conteúdo para fazer um parágrafo coeso
-    """
-    # Limpar todos os textos
+    """Cria um resumo inteligente da notícia"""
     titulo = limpar_texto(titulo)
     descricao = limpar_texto(descricao)
     conteudo = limpar_texto(conteudo)
     
-    # Se não tem descrição, retorna só o título
     if not descricao or len(descricao) < 20:
         return titulo
     
-    # Se a descrição é só repetição do título, tenta usar conteúdo
     if descricao.lower() in titulo.lower() or titulo.lower() in descricao.lower():
         if conteudo and len(conteudo) > 100:
-            # Pega as primeiras 2-3 frases do conteúdo
             frases = conteudo.split('.')[:3]
             resumo = '. '.join(frases).strip()
             if len(resumo) > 50:
                 return resumo + '.'
     
-    # Combina título e descrição de forma natural
     if len(descricao) > 150:
-        # Se a descrição é longa, usa ela
         return descricao[:300] + ('...' if len(descricao) > 300 else '')
     else:
-        # Combina título com descrição
         return f"{descricao}"
 
 # ============================================
-# BUSCA DE NOTÍCIAS COM CURADORIA
+# BUSCA DE NOTÍCIAS
 # ============================================
 
 def buscar_noticias_brasil_curadas():
-    """Busca notícias do Brasil com curadoria de qualidade usando múltiplas estratégias"""
+    """Busca notícias do Brasil"""
     print("📰 Buscando notícias do Brasil com curadoria...")
     
     noticias_coletadas = []
     
-    # ESTRATÉGIA 1: Top headlines do Brasil
     try:
         url = f'https://newsapi.org/v2/top-headlines?country=br&pageSize=20&apiKey={NEWSAPI_KEY}'
         resposta = requests.get(url, timeout=15)
@@ -148,35 +129,9 @@ def buscar_noticias_brasil_curadas():
         if dados.get('status') == 'ok' and dados.get('articles'):
             noticias_coletadas.extend(dados['articles'])
             print(f"✅ Headlines BR: {len(dados['articles'])} notícias")
-        else:
-            print(f"⚠️ Erro headlines BR: {dados.get('message', 'Desconhecido')}")
     except Exception as e:
-        print(f"⚠️ Erro na busca headlines: {e}")
+        print(f"⚠️ Erro na busca: {e}")
     
-    # ESTRATÉGIA 2: Buscar por palavras-chave brasileiras
-    palavras_chave_brasil = [
-        'Brasil', 'Brasília', 'São Paulo', 'Rio de Janeiro',
-        'governo brasileiro', 'economia brasil'
-    ]
-    
-    for palavra in palavras_chave_brasil:
-        if len(noticias_coletadas) >= 15:
-            break
-        
-        try:
-            url = f'https://newsapi.org/v2/everything?q={palavra}&language=pt&sortBy=publishedAt&pageSize=5&apiKey={NEWSAPI_KEY}'
-            resposta = requests.get(url, timeout=15)
-            dados = resposta.json()
-            
-            if dados.get('status') == 'ok' and dados.get('articles'):
-                noticias_coletadas.extend(dados['articles'])
-                print(f"✅ Busca '{palavra}': {len(dados['articles'])} notícias")
-        except Exception as e:
-            print(f"⚠️ Erro buscando '{palavra}': {e}")
-    
-    print(f"📊 Total coletado: {len(noticias_coletadas)} notícias antes da curadoria")
-    
-    # CURADORIA: Filtrar notícias relevantes
     noticias_relevantes = []
     titulos_vistos = set()
     
@@ -184,13 +139,10 @@ def buscar_noticias_brasil_curadas():
         titulo = noticia.get('title', '')
         descricao = noticia.get('description', '')
         
-        # Pular se já vimos esse título
         if titulo in titulos_vistos or not titulo:
             continue
         
-        # Pular se não é relevante
         if not eh_noticia_relevante(titulo, descricao):
-            print(f"❌ Filtrada: {titulo[:50]}...")
             continue
         
         titulos_vistos.add(titulo)
@@ -199,17 +151,15 @@ def buscar_noticias_brasil_curadas():
         if len(noticias_relevantes) >= 5:
             break
     
-    print(f"✅ {len(noticias_relevantes)} notícias relevantes do Brasil selecionadas")
+    print(f"✅ {len(noticias_relevantes)} notícias relevantes do Brasil")
     return noticias_relevantes
 
 def buscar_noticias_mundo_curadas():
-    """Busca e traduz notícias internacionais relevantes"""
+    """Busca e traduz notícias internacionais"""
     print("🌍 Buscando notícias do mundo...")
     
     noticias = []
-    
-    # Buscar de múltiplas fontes internacionais
-    paises = ['us', 'gb']  # EUA e Reino Unido
+    paises = ['us', 'gb']
     
     for pais in paises:
         if len(noticias) >= 5:
@@ -225,11 +175,10 @@ def buscar_noticias_mundo_curadas():
         except:
             pass
     
-    # Filtrar e traduzir
     noticias_curadas = []
     titulos_vistos = set()
     
-    print("🔄 Traduzindo e curando notícias internacionais...")
+    print("🔄 Traduzindo notícias internacionais...")
     
     for noticia in noticias:
         if len(noticias_curadas) >= 3:
@@ -241,11 +190,9 @@ def buscar_noticias_mundo_curadas():
         if not titulo_original or titulo_original in titulos_vistos:
             continue
         
-        # Traduzir
         titulo_traduzido = traduzir_texto(titulo_original)
         descricao_traduzida = traduzir_texto(descricao_original) if descricao_original else ""
         
-        # Verificar relevância após tradução
         if not eh_noticia_relevante(titulo_traduzido, descricao_traduzida):
             continue
         
@@ -255,23 +202,19 @@ def buscar_noticias_mundo_curadas():
         titulos_vistos.add(titulo_traduzido)
         noticias_curadas.append(noticia)
     
-    print(f"✅ {len(noticias_curadas)} notícias internacionais selecionadas")
+    print(f"✅ {len(noticias_curadas)} notícias internacionais")
     return noticias_curadas
 
 # ============================================
-# CRIAÇÃO DO ROTEIRO COM PERSONALIDADE
+# CRIAÇÃO DO ROTEIRO
 # ============================================
 
 def criar_roteiro_claudiao(noticias_brasil, noticias_mundo):
-    """
-    Cria roteiro com a personalidade do Claudião
-    Tom amigável, piadas quando apropriado, informal mas informativo
-    """
+    """Cria roteiro com personalidade do Claudião"""
     print("✍️ Criando roteiro do Claudião...")
     
     data_formatada, dia_semana = formatar_data_portugues()
     
-    # Variações de introdução do Claudião
     intros = [
         "E aí, meu povo! Bom dia, boa tarde ou boa noite, aqui é o Claudião!",
         "Salve, salve! Aqui é o Claudião dando as caras!",
@@ -279,7 +222,6 @@ def criar_roteiro_claudiao(noticias_brasil, noticias_mundo):
         "Fala galera! O Claudão chegou!",
     ]
     
-    # Chamada fixa após a intro
     chamada_fixa = f"""Eu tô aqui pra te deixar por dentro do que tá rolando nesse mundão! Então pega seu cafézinho, seu chazinho, ou aquele lanchinho da tarde, e vem comigo que eu vou te tirar da caverna da desinformação!
 
 Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais notícias do Brasil e do mundo pra você. Bora lá!
@@ -287,7 +229,6 @@ Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais not
 """
     
     intro_escolhida = intros[datetime.now().day % len(intros)]
-    
     roteiro = intro_escolhida + "\n\n" + chamada_fixa
     
     # BLOCO BRASIL
@@ -307,40 +248,19 @@ Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais not
             descricao = noticia.get('description', '')
             fonte = noticia.get('source', {}).get('name', 'uma fonte confiável')
             
-            # Criar resumo inteligente
             resumo = resumir_noticia(titulo, descricao)
             
             if not resumo or len(resumo) < 20:
                 continue
             
-            # Detectar se é notícia pesada (não fazer piada)
-            palavras_serias = ['morte', 'morto', 'morreu', 'assassinato', 'tragédia', 
-                              'desastre', 'acidente grave', 'vítima', 'ataque']
-            eh_seria = any(palavra in resumo.lower() for palavra in palavras_serias)
-            
-            # Montar o texto da notícia
             roteiro += f"{transicoes[i]}"
             roteiro += f"Segundo informações {'d' if fonte[0].lower() in 'aeiou' else 'd'}o {fonte}, "
             roteiro += f"{resumo}"
-            
-            # Adicionar comentário do Claudião quando apropriado
-            if not eh_seria and i < 2:  # Só comenta nas primeiras 2 notícias
-                if 'tecnologia' in resumo.lower() or 'startup' in resumo.lower():
-                    roteiro += " Olha aí, a tecnologia não para!"
-                elif 'economia' in resumo.lower() or 'dinheiro' in resumo.lower():
-                    roteiro += " Bora ficar de olho no bolso, hein!"
-                elif 'recorde' in resumo.lower() or 'conquista' in resumo.lower():
-                    roteiro += " Isso é Brasil, meu amigo!"
-            
             roteiro += "\n\n"
-    else:
-        roteiro += "Opa, tivemos um probleminha técnico aqui e não consegui pegar as notícias do Brasil hoje. Mas relaxa que as internacionais eu trouxe!\n\n"
     
-    # TRANSIÇÃO PRO MUNDO
+    # TRANSIÇÃO
     if noticias_brasil and len(noticias_brasil) > 0:
         roteiro += "Beleza, agora vamos dar um pulinho pra fora e ver o que tá acontecendo pelo mundo.\n\n"
-    else:
-        roteiro += "Então bora lá, vamos ver o que tá pegando no mundo!\n\n"
     
     # BLOCO MUNDO
     if noticias_mundo and len(noticias_mundo) > 0:
@@ -360,23 +280,10 @@ Hoje é {dia_semana} feira, dia {data_formatada}, e eu separei as principais not
             if not resumo or len(resumo) < 20:
                 continue
             
-            palavras_serias = ['morte', 'morto', 'guerra', 'ataque', 'tragédia', 
-                              'desastre', 'furacão', 'terremoto']
-            eh_seria = any(palavra in resumo.lower() for palavra in palavras_serias)
-            
             roteiro += f"{transicoes_mundo[i]}"
             roteiro += f"Segundo {'a' if fonte[0].lower() in 'aeiou' else 'o'} {fonte}, "
             roteiro += f"{resumo}"
-            
-            if not eh_seria and i == 0:
-                if 'tecnologia' in resumo.lower():
-                    roteiro += " A inovação não tem fronteiras!"
-                elif 'economia' in resumo.lower():
-                    roteiro += " O mundo dos negócios não para!"
-            
             roteiro += "\n\n"
-    else:
-        roteiro += "Também não consegui as internacionais hoje, que azar! Mas amanhã eu volto com tudo!\n\n"
     
     # ENCERRAMENTO
     total_noticias = len(noticias_brasil) + len(noticias_mundo)
@@ -395,17 +302,13 @@ Falou, galera! Claudião assinando embaixo!
     return roteiro
 
 def criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts):
-    """Cria versão visual formatada do roteiro"""
+    """Cria versão visual formatada"""
     data_formatada, dia_semana = formatar_data_portugues()
     
     roteiro_visual = f"""╔══════════════════════════════════════════════════════════════╗
 ║              🎙️  CLAUDIÃO NEWS - PODCAST DIÁRIO            ║
 ║                    {data_formatada}                   ║
 ╚══════════════════════════════════════════════════════════════╝
-
-════════════════════════════════════════════════════════════════
-📝 ROTEIRO PARA LEITURA
-════════════════════════════════════════════════════════════════
 
 {roteiro_tts}
 
@@ -440,36 +343,111 @@ def criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts):
     
     roteiro_visual += f"""
 ════════════════════════════════════════════════════════════════
-📊 ESTATÍSTICAS DO EPISÓDIO
+📊 ESTATÍSTICAS
 ════════════════════════════════════════════════════════════════
 
-Total de notícias: {len(noticias_brasil) + len(noticias_mundo)}
-Notícias do Brasil: {len(noticias_brasil)}
-Notícias do Mundo: {len(noticias_mundo)}
-Data de geração: {datetime.now().strftime('%d/%m/%Y às %H:%M')}
-
-Podcast gerado automaticamente pelo sistema Claudião News
+Total: {len(noticias_brasil) + len(noticias_mundo)} notícias
+Brasil: {len(noticias_brasil)} | Mundo: {len(noticias_mundo)}
+Gerado em: {datetime.now().strftime('%d/%m/%Y às %H:%M')}
 """
     
     return roteiro_visual
 
 # ============================================
+# GERAÇÃO DE ÁUDIO (NOVO!)
+# ============================================
+
+def preparar_texto_para_tts(texto):
+    """
+    Prepara o texto para melhorar a pronúncia do gTTS
+    """
+    print("🔧 Preparando texto para TTS...")
+    
+    # Substituições para melhorar pronúncia
+    texto = texto.replace('EUA', 'Estados Unidos')
+    texto = texto.replace('UE', 'União Europeia')
+    texto = texto.replace('ONU', 'Organização das Nações Unidas')
+    texto = texto.replace('PIB', 'P I B')
+    texto = texto.replace('CEO', 'C E O')
+    texto = texto.replace('IA', 'inteligência artificial')
+    texto = texto.replace('AI', 'inteligência artificial')
+    
+    # Adicionar pausas naturais
+    texto = texto.replace('.\n\n', '. \n\n')  # Pausa entre parágrafos
+    texto = texto.replace(': ', ':, ')  # Pausa após dois pontos
+    
+    return texto
+
+def gerar_audio_gtts(texto, nome_arquivo):
+    """
+    Gera arquivo de áudio MP3 usando gTTS
+    
+    Args:
+        texto: Texto a ser convertido em áudio
+        nome_arquivo: Nome do arquivo MP3 (ex: 'podcast_2025-10-30.mp3')
+    
+    Returns:
+        Caminho do arquivo gerado ou None se falhar
+    """
+    print(f"\n🔊 Gerando áudio com gTTS...")
+    print(f"   Tamanho do texto: {len(texto)} caracteres")
+    print(f"   Tempo estimado: 30-60 segundos...")
+    
+    try:
+        # Preparar texto
+        texto_preparado = preparar_texto_para_tts(texto)
+        
+        # IMPORTANTE: Configurações do gTTS
+        tts = gTTS(
+            text=texto_preparado,
+            lang='pt',              # Português
+            slow=False,             # Velocidade normal (True = mais lento)
+            lang_check=False        # Não verificar idioma (mais rápido)
+        )
+        
+        # Salvar arquivo
+        tts.save(nome_arquivo)
+        
+        # Verificar se foi criado
+        if os.path.exists(nome_arquivo):
+            tamanho_mb = os.path.getsize(nome_arquivo) / (1024 * 1024)
+            print(f"   ✅ Áudio gerado: {nome_arquivo}")
+            print(f"   📊 Tamanho: {tamanho_mb:.2f} MB")
+            return nome_arquivo
+        else:
+            print(f"   ❌ Erro: Arquivo não foi criado")
+            return None
+            
+    except Exception as e:
+        print(f"   ❌ Erro ao gerar áudio: {e}")
+        return None
+
+def calcular_duracao_estimada(texto):
+    """
+    Estima duração do áudio baseado no número de palavras
+    Velocidade média: ~150 palavras por minuto
+    """
+    palavras = len(texto.split())
+    minutos = palavras / 150
+    return int(minutos), int((minutos % 1) * 60)
+
+# ============================================
 # SALVAR ARQUIVOS
 # ============================================
 
-def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo):
+def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo, arquivo_audio=None):
     """Salva todos os arquivos do podcast"""
     hoje = datetime.now().strftime('%Y-%m-%d')
     
     print("\n💾 Salvando arquivos...")
     
-    # 1. Roteiro TTS (limpo)
+    # 1. Roteiro TTS
     arquivo_tts = f'podcast_roteiro_tts_{hoje}.txt'
     with open(arquivo_tts, 'w', encoding='utf-8') as f:
         f.write(roteiro_tts)
     print(f"  ✅ Roteiro TTS: {arquivo_tts}")
     
-    # 2. Roteiro visual (com links)
+    # 2. Transcrição visual
     arquivo_visual = f'podcast_transcricao_{hoje}.txt'
     with open(arquivo_visual, 'w', encoding='utf-8') as f:
         f.write(roteiro_visual)
@@ -477,19 +455,25 @@ def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
     
     # 3. Metadados
     arquivo_json = f'podcast_metadados_{hoje}.json'
+    
+    minutos, segundos = calcular_duracao_estimada(roteiro_tts)
+    
     metadados = {
         'data_geracao': datetime.now().isoformat(),
         'data_podcast': hoje,
         'apresentador': 'Claudião',
+        'duracao_estimada': f"{minutos}min {segundos}s",
+        'tem_audio': arquivo_audio is not None,
+        'arquivo_audio': arquivo_audio if arquivo_audio else None,
         'estatisticas': {
             'total_noticias': len(noticias_brasil) + len(noticias_mundo),
             'noticias_brasil': len(noticias_brasil),
-            'noticias_mundo': len(noticias_mundo)
+            'noticias_mundo': len(noticias_mundo),
+            'caracteres': len(roteiro_tts),
+            'palavras': len(roteiro_tts.split())
         },
         'fontes_brasil': [n.get('source', {}).get('name') for n in noticias_brasil],
-        'fontes_mundo': [n.get('source', {}).get('name') for n in noticias_mundo],
-        'titulos_brasil': [n.get('title') for n in noticias_brasil],
-        'titulos_mundo': [n.get('title') for n in noticias_mundo]
+        'fontes_mundo': [n.get('source', {}).get('name') for n in noticias_mundo]
     }
     
     with open(arquivo_json, 'w', encoding='utf-8') as f:
@@ -503,31 +487,41 @@ def salvar_arquivos(roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
 # ============================================
 
 def gerar_podcast():
-    """Executa todo o pipeline de geração do podcast"""
+    """Executa todo o pipeline"""
     
     print("\n" + "="*70)
-    print("🎙️  CLAUDIÃO NEWS - GERADOR DE PODCAST AUTOMÁTICO")
+    print("🎙️  CLAUDIÃO NEWS - GERADOR DE PODCAST COM ÁUDIO")
     print("="*70 + "\n")
+    
+    inicio = time.time()
     
     # 1. Buscar notícias
     noticias_brasil = buscar_noticias_brasil_curadas()
     noticias_mundo = buscar_noticias_mundo_curadas()
     
     if not noticias_brasil and not noticias_mundo:
-        print("\n❌ ERRO: Não foi possível buscar nenhuma notícia!")
-        print("Verifique sua API Key e conexão com internet.\n")
+        print("\n❌ ERRO: Não foi possível buscar notícias!\n")
         return
     
     # 2. Criar roteiros
     roteiro_tts = criar_roteiro_claudiao(noticias_brasil, noticias_mundo)
     roteiro_visual = criar_roteiro_visual(noticias_brasil, noticias_mundo, roteiro_tts)
     
-    # 3. Salvar arquivos
+    # 3. Gerar áudio
+    hoje = datetime.now().strftime('%Y-%m-%d')
+    nome_audio = f'podcast_audio_{hoje}.mp3'
+    
+    arquivo_audio = gerar_audio_gtts(roteiro_tts, nome_audio)
+    
+    # 4. Salvar arquivos
     arquivo_tts, arquivo_visual, arquivo_json = salvar_arquivos(
-        roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo
+        roteiro_tts, roteiro_visual, noticias_brasil, noticias_mundo, arquivo_audio
     )
     
-    # 4. Relatório final
+    # 5. Relatório final
+    tempo_total = time.time() - inicio
+    minutos_estimados, segundos_estimados = calcular_duracao_estimada(roteiro_tts)
+    
     print("\n" + "="*70)
     print("✅ PODCAST GERADO COM SUCESSO!")
     print("="*70)
@@ -535,21 +529,15 @@ def gerar_podcast():
     print(f"  • Total de notícias: {len(noticias_brasil) + len(noticias_mundo)}")
     print(f"  • Notícias do Brasil: {len(noticias_brasil)}")
     print(f"  • Notícias do Mundo: {len(noticias_mundo)}")
+    print(f"  • Duração estimada: {minutos_estimados}min {segundos_estimados}s")
+    print(f"  • Tempo de geração: {tempo_total:.1f}s")
     print(f"\n📁 Arquivos gerados:")
     print(f"  • {arquivo_tts}")
     print(f"  • {arquivo_visual}")
     print(f"  • {arquivo_json}")
+    if arquivo_audio:
+        print(f"  • {arquivo_audio} 🎵")
     print("\n" + "="*70 + "\n")
-    
-    # 5. Preview do roteiro
-    print("📖 PREVIEW DO ROTEIRO (300 caracteres):")
-    print("-"*70)
-    print(roteiro_tts[:300] + "...")
-    print("-"*70 + "\n")
-
-# ============================================
-# EXECUTAR
-# ============================================
 
 if __name__ == "__main__":
     gerar_podcast()
