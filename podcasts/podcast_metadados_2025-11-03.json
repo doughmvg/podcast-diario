@@ -1,34 +1,21 @@
 {
-  "data_geracao": "2025-11-03T09:49:53.926508",
+  "data_geracao": "2025-11-03T11:43:20.073454",
   "data_podcast": "2025-11-03",
   "apresentador": "Claudião",
+  "duracao_estimada": "1min 49s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-11-03.mp3",
   "estatisticas": {
-    "total_noticias": 8,
-    "noticias_brasil": 5,
-    "noticias_mundo": 3
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1563,
+    "palavras": 274
   },
-  "fontes_brasil": [
-    "Noticiabrasil.net.br",
-    "Noticiabrasil.net.br",
-    "BBC News",
-    "Metropoles.com",
-    "Olhardigital.com.br"
-  ],
+  "fontes_brasil": [],
   "fontes_mundo": [
+    "Politico",
     "BBC News",
-    "Associated Press",
-    "Associated Press"
-  ],
-  "titulos_brasil": [
-    "Agrupamento russo Yug toma posições mais vantajosas, Ucrânia perde até 120 militares, diz MD",
-    "Mídia ocidental reconhece desproteção da Ucrânia ante mísseis russos Iskander-M",
-    "Dez pessoas são esfaqueadas em trem para Londres; o que se sabe sobre o ataque",
-    "Governo demite indicados do Centrão para abocanhar cargos para o PT",
-    "Vasco x São Paulo: onde assistir, horário e escalação do Brasileirão"
-  ],
-  "titulos_mundo": [
-    "Furacão Melissa: britânicos evacuados da Jamaica enquanto o Reino Unido envia ajuda - BBC",
-    "Com alarde de faraó, Egito inaugura um enorme novo museu dedicado à sua antiga civilização - AP News",
-    "Andrew irá para o exílio na propriedade privada e remota do rei Charles em Sandringham - AP News"
+    "CNN"
   ]
 }
