@@ -1,0 +1,20 @@
+{
+  "data_geracao": "2025-11-09T09:31:27.166545",
+  "data_podcast": "2025-11-09",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 30s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-11-09.mp3",
+  "estatisticas": {
+    "total_noticias": 2,
+    "noticias_brasil": 0,
+    "noticias_mundo": 2,
+    "caracteres": 1312,
+    "palavras": 227
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "OPB News",
+    "ABC News"
+  ]
+}
