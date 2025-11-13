@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-11-13T09:41:29.425048",
+  "data_podcast": "2025-11-13",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 52s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-11-13.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1601,
+    "palavras": 280
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Wall Street Journal",
+    "NPR",
+    "Variety"
+  ]
+}
