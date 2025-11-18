@@ -1,0 +1,20 @@
+{
+  "data_geracao": "2025-11-18T09:41:55.354279",
+  "data_podcast": "2025-11-18",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 36s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-11-18.mp3",
+  "estatisticas": {
+    "total_noticias": 2,
+    "noticias_brasil": 0,
+    "noticias_mundo": 2,
+    "caracteres": 1365,
+    "palavras": 241
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "NFL News",
+    "Simple Flying"
+  ]
+}
