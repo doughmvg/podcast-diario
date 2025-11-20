@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-11-20T09:39:49.850254",
+  "data_podcast": "2025-11-20",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 0s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-11-20.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1740,
+    "palavras": 302
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Washington Post",
+    "Bloomberg",
+    "The Washington Post"
+  ]
+}
