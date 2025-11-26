@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-11-26T09:44:26.743969",
+  "data_podcast": "2025-11-26",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 54s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-11-26.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1649,
+    "palavras": 287
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Bloomberg",
+    "NBCSports.com",
+    "The Times of India"
+  ]
+}
