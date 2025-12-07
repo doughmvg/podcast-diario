@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-12-07T09:26:25.382703",
+  "data_podcast": "2025-12-07",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 44s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-12-07.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1526,
+    "palavras": 261
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Deadline",
+    "Politico",
+    "The Washington Post"
+  ]
+}
