@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-12-09T09:32:08.835078",
+  "data_podcast": "2025-12-09",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 59s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-12-09.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1766,
+    "palavras": 298
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Associated Press",
+    "Bloomberg",
+    "Financial Times"
+  ]
+}
