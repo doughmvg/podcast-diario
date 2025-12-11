@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-12-11T09:34:07.684371",
+  "data_podcast": "2025-12-11",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 57s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-12-11.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1668,
+    "palavras": 294
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Bloomberg",
+    "KSL.com",
+    "On3.com"
+  ]
+}
