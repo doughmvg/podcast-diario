@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-12-12T09:33:06.466967",
+  "data_podcast": "2025-12-12",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 49s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-12-12.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1549,
+    "palavras": 274
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Washington Post",
+    "BBC News",
+    "Axios"
+  ]
+}
