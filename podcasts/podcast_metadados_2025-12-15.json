@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-12-15T09:40:51.026988",
+  "data_podcast": "2025-12-15",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 42s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-12-15.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1478,
+    "palavras": 256
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CNN",
+    "Fox News",
+    "ESPN"
+  ]
+}
