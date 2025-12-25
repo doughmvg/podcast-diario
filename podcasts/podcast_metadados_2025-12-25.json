@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2025-12-25T09:31:19.475853",
+  "data_podcast": "2025-12-25",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 55s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2025-12-25.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1675,
+    "palavras": 288
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "BBC News",
+    "Al Jazeera English",
+    "Associated Press"
+  ]
+}
