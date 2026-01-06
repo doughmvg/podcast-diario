@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-01-06T09:34:52.958361",
+  "data_podcast": "2026-01-06",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 48s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-01-06.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1602,
+    "palavras": 272
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CBS News",
+    "BBC News",
+    "The Washington Post"
+  ]
+}
