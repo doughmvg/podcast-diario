@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-01-10T09:28:46.954096",
+  "data_podcast": "2026-01-10",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 55s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-01-10.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1703,
+    "palavras": 289
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CNN",
+    "Associated Press",
+    "Financial Times"
+  ]
+}
