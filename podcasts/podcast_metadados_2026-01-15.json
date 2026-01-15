@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-01-15T09:36:26.526373",
+  "data_podcast": "2026-01-15",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 45s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-01-15.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1491,
+    "palavras": 264
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "BBC News",
+    "Rolling Stone",
+    "DW (English)"
+  ]
+}
