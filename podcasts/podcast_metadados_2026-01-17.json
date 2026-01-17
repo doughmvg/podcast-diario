@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-01-17T09:28:36.253945",
+  "data_podcast": "2026-01-17",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 51s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-01-17.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1598,
+    "palavras": 278
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Al Jazeera English",
+    "The Washington Post",
+    "Hollywood Reporter"
+  ]
+}
