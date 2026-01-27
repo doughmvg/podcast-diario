@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-01-27T09:41:53.939744",
+  "data_podcast": "2026-01-27",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 40s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-01-27.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1447,
+    "palavras": 250
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "ABC News",
+    "NBCSports.com",
+    "Bleacher Report"
+  ]
+}
