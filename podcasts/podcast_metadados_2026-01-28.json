@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-01-28T09:42:19.936777",
+  "data_podcast": "2026-01-28",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 43s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-01-28.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1509,
+    "palavras": 259
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Arcraiders.com",
+    "BBC News",
+    "Yahoo Entertainment"
+  ]
+}
