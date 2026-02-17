@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-02-17T09:58:23.255812",
+  "data_podcast": "2026-02-17",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 4s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-02-17.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1743,
+    "palavras": 310
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The-sun.com",
+    "NPR",
+    "Associated Press"
+  ]
+}
