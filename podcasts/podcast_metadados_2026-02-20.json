@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-02-20T09:52:51.579029",
+  "data_podcast": "2026-02-20",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 6s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-02-20.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1846,
+    "palavras": 315
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "San Francisco Chronicle",
+    "The Washington Post",
+    "Associated Press"
+  ]
+}
