@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-02-27T09:54:06.672705",
+  "data_podcast": "2026-02-27",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 41s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-02-27.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1441,
+    "palavras": 253
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Google News",
+    "Google News",
+    "Google News"
+  ]
+}
