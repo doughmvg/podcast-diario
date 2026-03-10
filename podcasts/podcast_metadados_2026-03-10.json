@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-03-10T09:55:24.883264",
+  "data_podcast": "2026-03-10",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 3s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-03-10.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1780,
+    "palavras": 308
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "BBC News",
+    "Associated Press",
+    "On3.com"
+  ]
+}
