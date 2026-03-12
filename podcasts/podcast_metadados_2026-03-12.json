@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-03-12T09:54:49.582613",
+  "data_podcast": "2026-03-12",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 46s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-03-12.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1534,
+    "palavras": 266
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Al Jazeera English",
+    "Axios",
+    "BBC News"
+  ]
+}
