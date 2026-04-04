@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-04-04T09:49:57.223238",
+  "data_podcast": "2026-04-04",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 2s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-04-04.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1786,
+    "palavras": 307
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Associated Press",
+    "Al Jazeera English",
+    "Yahoo Entertainment"
+  ]
+}
