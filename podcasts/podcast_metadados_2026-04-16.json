@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-04-16T10:22:18.764997",
+  "data_podcast": "2026-04-16",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 53s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-04-16.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1627,
+    "palavras": 283
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Spaceflight Now",
+    "CBS News",
+    "DW (English)"
+  ]
+}
