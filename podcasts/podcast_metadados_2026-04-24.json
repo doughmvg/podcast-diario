@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-04-24T10:41:06.420946",
+  "data_podcast": "2026-04-24",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 0s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-04-24.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1674,
+    "palavras": 300
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Al Jazeera English",
+    "TMZ",
+    "NPR"
+  ]
+}
