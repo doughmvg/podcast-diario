@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-05-09T10:13:41.878110",
+  "data_podcast": "2026-05-09",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 9s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-05-09.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1857,
+    "palavras": 324
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Bloomberg",
+    "CBS News",
+    "Nintendoeverything.com"
+  ]
+}
