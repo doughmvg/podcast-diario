@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-05-15T11:26:25.755441",
+  "data_podcast": "2026-05-15",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 40s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-05-15.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1442,
+    "palavras": 250
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "BBC News",
+    "The Wall Street Journal",
+    "CNBC"
+  ]
+}
