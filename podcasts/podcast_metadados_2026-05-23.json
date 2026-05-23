@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-05-23T10:41:03.779497",
+  "data_podcast": "2026-05-23",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 43s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-05-23.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1504,
+    "palavras": 258
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "BBC News",
+    "Axios",
+    "Axios"
+  ]
+}
