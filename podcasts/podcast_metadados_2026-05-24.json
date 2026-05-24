@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-05-24T10:46:53.473949",
+  "data_podcast": "2026-05-24",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 55s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-05-24.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1607,
+    "palavras": 289
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Bloomberg",
+    "The Washington Post",
+    "Heat.com"
+  ]
+}
