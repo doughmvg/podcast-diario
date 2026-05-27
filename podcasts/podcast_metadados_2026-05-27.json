@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-05-27T12:28:10.586725",
+  "data_podcast": "2026-05-27",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 43s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-05-27.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1467,
+    "palavras": 258
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Washington Post",
+    "BBC News",
+    "The Wall Street Journal"
+  ]
+}
