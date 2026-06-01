@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-06-01T15:30:08.544206",
+  "data_podcast": "2026-06-01",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 49s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-06-01.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1568,
+    "palavras": 274
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Verge",
+    "Just Jared",
+    "Yahoo Entertainment"
+  ]
+}
