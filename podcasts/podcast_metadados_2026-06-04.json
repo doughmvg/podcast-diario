@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-06-04T12:08:46.884524",
+  "data_podcast": "2026-06-04",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 59s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-06-04.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1714,
+    "palavras": 298
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Jerusalem Post",
+    "NBC News",
+    "Patriots.com"
+  ]
+}
