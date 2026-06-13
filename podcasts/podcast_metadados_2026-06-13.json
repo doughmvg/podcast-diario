@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-06-13T11:22:26.721418",
+  "data_podcast": "2026-06-13",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 48s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-06-13.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1579,
+    "palavras": 271
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CBS News",
+    "TMZ",
+    "NPR"
+  ]
+}
