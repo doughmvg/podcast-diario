@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-06-23T12:12:00.923343",
+  "data_podcast": "2026-06-23",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 46s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-06-23.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1559,
+    "palavras": 267
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "NBC News",
+    "CNET",
+    "CNBC"
+  ]
+}
