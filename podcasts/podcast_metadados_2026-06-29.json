@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-06-29T13:12:45.026429",
+  "data_podcast": "2026-06-29",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 57s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-06-29.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1706,
+    "palavras": 295
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CBS News",
+    "Associated Press",
+    "The Washington Post"
+  ]
+}
