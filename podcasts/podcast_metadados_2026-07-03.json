@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-07-03T11:38:49.508027",
+  "data_podcast": "2026-07-03",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 57s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-07-03.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1714,
+    "palavras": 293
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "The Washington Post",
+    "NBC News",
+    "Associated Press"
+  ]
+}
