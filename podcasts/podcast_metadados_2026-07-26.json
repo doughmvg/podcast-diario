@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-07-26T10:48:25.815711",
+  "data_podcast": "2026-07-26",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 12s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-07-26.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1938,
+    "palavras": 330
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Associated Press",
+    "Associated Press",
+    "autosport.com"
+  ]
+}
