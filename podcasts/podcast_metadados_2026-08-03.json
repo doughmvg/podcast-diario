@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-08-03T12:33:09.276577",
+  "data_podcast": "2026-08-03",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 55s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-08-03.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1663,
+    "palavras": 289
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CBS News",
+    "BBC News",
+    "CBS News"
+  ]
+}
