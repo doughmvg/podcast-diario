@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-08-07T10:05:59.150720",
+  "data_podcast": "2026-08-07",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 53s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-08-07.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1674,
+    "palavras": 285
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "KCRA Sacramento",
+    "NPR",
+    "CNBC"
+  ]
+}
