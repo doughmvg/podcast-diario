@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-08-26T09:50:36.248197",
+  "data_podcast": "2026-08-26",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 37s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-08-26.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1445,
+    "palavras": 244
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "WRAL.com",
+    "The Weather Channel",
+    "NPR"
+  ]
+}
