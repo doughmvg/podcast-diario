@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-09-03T13:30:10.521604",
+  "data_podcast": "2026-09-03",
+  "apresentador": "Claudião",
+  "duracao_estimada": "2min 12s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-09-03.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1955,
+    "palavras": 330
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Associated Press",
+    "Associated Press",
+    "Bloomberg"
+  ]
+}
