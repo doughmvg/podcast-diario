@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-09-10T13:30:04.671403",
+  "data_podcast": "2026-09-10",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 42s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-09-10.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1513,
+    "palavras": 257
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "BBC News",
+    "The Washington Post",
+    "Fox News"
+  ]
+}
