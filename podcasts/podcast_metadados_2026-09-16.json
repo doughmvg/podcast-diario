@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-09-16T14:09:18.664107",
+  "data_podcast": "2026-09-16",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 49s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-09-16.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1575,
+    "palavras": 275
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CBS News",
+    "Al Jazeera English",
+    "NBC News"
+  ]
+}
