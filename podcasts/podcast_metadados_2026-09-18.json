@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-09-18T13:32:47.507229",
+  "data_podcast": "2026-09-18",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 47s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-09-18.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1567,
+    "palavras": 269
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CBS Sports",
+    "NBCSports.com",
+    "CNN"
+  ]
+}
