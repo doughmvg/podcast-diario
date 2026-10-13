@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-10-13T16:52:35.635837",
+  "data_podcast": "2026-10-13",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 38s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-10-13.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1453,
+    "palavras": 246
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "NBC News",
+    "CinemaBlend",
+    "cleveland.com"
+  ]
+}
