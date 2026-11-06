@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-11-06T16:41:30.033817",
+  "data_podcast": "2026-11-06",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 40s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-11-06.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1437,
+    "palavras": 252
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "CNN",
+    "NBC News",
+    "Yahoo Entertainment"
+  ]
+}
