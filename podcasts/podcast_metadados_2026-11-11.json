@@ -1,0 +1,21 @@
+{
+  "data_geracao": "2026-11-11T17:00:56.161188",
+  "data_podcast": "2026-11-11",
+  "apresentador": "Claudião",
+  "duracao_estimada": "1min 42s",
+  "tem_audio": true,
+  "arquivo_audio": "podcast_audio_2026-11-11.mp3",
+  "estatisticas": {
+    "total_noticias": 3,
+    "noticias_brasil": 0,
+    "noticias_mundo": 3,
+    "caracteres": 1477,
+    "palavras": 257
+  },
+  "fontes_brasil": [],
+  "fontes_mundo": [
+    "Al Jazeera English",
+    "The Verge",
+    "The Washington Post"
+  ]
+}
